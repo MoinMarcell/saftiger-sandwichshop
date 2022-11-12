@@ -23,7 +23,7 @@ public class BookRepo {
                 )
                 .block();
     }
-    
+
     public Book getRandomBook(){
         Random random = new Random();
         int index = random.nextInt(0, books.length);
