@@ -62,6 +62,7 @@ class SandwichServiceTest {
     void saveSandwich() {
         //GIVEN
         String expectedId = "1";
+        Book bookExpected = new Book("1", "title", "author");
         Sandwich expected = new Sandwich(
                 "1",
                 "expected",
@@ -73,6 +74,7 @@ class SandwichServiceTest {
         //WHEN
         when(sandwichRepo.saveSandwich(any())).thenReturn(expected);
         when(idService.generateId()).thenReturn(expectedId);
+        when(bookService.getRandomBook()).thenReturn(bookExpected);
 
         Sandwich actual = sandwichService.saveSandwich(expected);
 
