@@ -4,6 +4,7 @@ import com.github.moinmarcell.saftigersandwichshop.model.Book;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Random;
 
 @Repository
 public class BookRepo {
@@ -24,6 +25,11 @@ public class BookRepo {
             }
         }
         return null;
+    }
+    public Book getRandomBook(){
+        Random random = new Random();
+        int index = random.nextInt(0, books().size());
+        return books.get(index);
     }
 
 }
