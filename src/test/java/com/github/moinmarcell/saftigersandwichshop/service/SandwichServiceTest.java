@@ -61,10 +61,25 @@ class SandwichServiceTest {
     @Test
     void saveSandwich() {
         //GIVEN
+        String expectedId = "1";
+        Sandwich expected = new Sandwich(
+                "1",
+                "expected",
+                Collections.emptyList(),
+                2,
+                false,
+                new Book("1", "title", "author"));
 
         //WHEN
+        when(sandwichRepo.saveSandwich(any())).thenReturn(expected);
+        when(idService.generateId()).thenReturn(expectedId);
+
+        Sandwich actual = sandwichService.saveSandwich(expected);
 
         //THEN
+        assertEquals(expected, actual);
+        verify(sandwichRepo).saveSandwich(expected);
+
     }
 
     @Test
