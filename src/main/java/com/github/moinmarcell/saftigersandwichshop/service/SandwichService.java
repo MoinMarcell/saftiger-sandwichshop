@@ -35,7 +35,7 @@ public class SandwichService {
                 sandwich.name(),
                 sandwich.ingredients(),
                 sandwich.numberOfCheeseLayers(),
-                sandwich.bunIsGrilles(),
+                sandwich.bunIsGrilled(),
                 bookService.getRandomBook()));
     }
 

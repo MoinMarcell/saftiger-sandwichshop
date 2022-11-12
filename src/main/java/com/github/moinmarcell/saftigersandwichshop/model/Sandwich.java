@@ -7,7 +7,7 @@ public record Sandwich(
         String name,
         List<String> ingredients,
         int numberOfCheeseLayers,
-        boolean bunIsGrilles,
+        boolean bunIsGrilled,
         Book giftBook
 ) {
 
