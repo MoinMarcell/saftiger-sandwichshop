@@ -12,10 +12,12 @@ public class SandwichService {
 
     private final SandwichRepo sandwichRepo;
     private final IdService idService;
+    private final BookService bookService;
 
-    public SandwichService(SandwichRepo sandwichRepo, IdService idService) {
+    public SandwichService(SandwichRepo sandwichRepo, IdService idService, BookService bookService) {
         this.sandwichRepo = sandwichRepo;
         this.idService = idService;
+        this.bookService = bookService;
     }
 
     public List<Sandwich> getAllSandwiches(){
@@ -33,7 +35,8 @@ public class SandwichService {
                 sandwich.name(),
                 sandwich.ingredients(),
                 sandwich.numberOfCheeseLayers(),
-                sandwich.bunIsGrilles()));
+                sandwich.bunIsGrilles(),
+                bookService.getRandomBook()));
     }
 
     public Sandwich updateSandwich(String id, Sandwich sandwich){

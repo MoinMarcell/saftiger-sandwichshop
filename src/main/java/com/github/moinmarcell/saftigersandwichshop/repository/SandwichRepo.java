@@ -38,7 +38,7 @@ public class SandwichRepo {
     }
 
     public Sandwich updateSandwich(String id, Sandwich sandwich){
-        Sandwich toSave = new Sandwich(id, sandwich.name(), sandwich.ingredients(), sandwich.numberOfCheeseLayers(), sandwich.bunIsGrilles());
+        Sandwich toSave = new Sandwich(id, sandwich.name(), sandwich.ingredients(), sandwich.numberOfCheeseLayers(), sandwich.bunIsGrilles(), sandwich.giftBook());
         sandwiches.remove(getSandwichById(id));
         sandwiches.add(toSave);
         return toSave;

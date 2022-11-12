@@ -1,35 +1,33 @@
 package com.github.moinmarcell.saftigersandwichshop.repository;
 
 import com.github.moinmarcell.saftigersandwichshop.model.Book;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.reactive.function.client.WebClient;
 
-import java.util.List;
 import java.util.Random;
 
 @Repository
 public class BookRepo {
-    private final List<Book> books;
+    private final Book[] books;
 
-    public BookRepo(List<Book> books) {
-        this.books = books;
+    public BookRepo() {
+        this.books = WebClient
+                .builder()
+                .baseUrl("https://my-json-server.typicode.com/Flooooooooooorian")
+                .build()
+                .method(HttpMethod.GET)
+                .uri("/BookApi/books")
+                .exchangeToMono(
+                    clientResponse -> clientResponse.bodyToMono(Book[].class)
+                )
+                .block();
     }
-
-    public List<Book> books() {
-        return books;
-    }
-
-    public Book getBookById(String id){
-        for(Book b : books){
-            if(b.id().equals(id)){
-                return b;
-            }
-        }
-        return null;
-    }
+    
     public Book getRandomBook(){
         Random random = new Random();
-        int index = random.nextInt(0, books().size());
-        return books.get(index);
+        int index = random.nextInt(0, books.length);
+        return books[index];
     }
 
 }
