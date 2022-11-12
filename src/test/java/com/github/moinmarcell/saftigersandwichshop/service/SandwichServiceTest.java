@@ -59,7 +59,7 @@ class SandwichServiceTest {
     }
 
     @Test
-    void saveSandwich() {
+    void saveSandwich_whenSandwichNotExist_thenAddSandwichToListAndReturnAddedSandwich() {
         //GIVEN
         String expectedId = "1";
         Book bookExpected = new Book("1", "title", "author");
@@ -85,7 +85,7 @@ class SandwichServiceTest {
     }
 
     @Test
-    void updateSandwich() {
+    void updateSandwich_whenSandwichIdExist_thenReturnEditSandwich() {
 
         //GIVEN
         Sandwich expected = new Sandwich(
@@ -107,7 +107,7 @@ class SandwichServiceTest {
     }
 
     @Test
-    void deleteSandwich() {
+    void deleteSandwich_whenSandwichIdExist_thenDeleteSandwichByIdAndReturnDeletedSandwich() {
         //GIVEN
         Sandwich expected = new Sandwich(
                 "1",
